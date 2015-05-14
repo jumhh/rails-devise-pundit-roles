@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  right_role: 1
+  user_id: 
+  company_id: 
+  team_id: 
+
+two:
+  right_role: 1
+  user_id: 
+  company_id: 
+  team_id: 

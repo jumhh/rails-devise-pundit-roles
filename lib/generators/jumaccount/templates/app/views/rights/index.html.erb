@@ -1,0 +1,43 @@
+<%= generator_label %>
+<div class="container">
+  <div class="row">
+    <h3>Rights</h3>
+    <div class="column">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>ID</th>
+            <th>Team</th>
+            <th>ID</th>
+            <th>User</th>
+            <th>ID</th>
+            <th>Right role</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%% @rights.each do |right| %>
+          <tr>
+            <td><%%= right.company.company_name %></td>
+            <td><%%= right.company_id %></td>
+            <td><%%= right.team.team_name %></td>
+            <td><%%= right.team_id %></td>
+            <td><%%= right.user.email %></td>
+            <td><%%= right.user_id %></td>
+            <td><%%= right.right_role.titleize %></td>
+            <td><%%= link_to 'Edit', edit_right_path(right) %></td>
+            <td><%%= link_to 'Destroy', right, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <%% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%%= link_to 'New Right', new_right_path %>
+    </div>
+  </div>
+</div>

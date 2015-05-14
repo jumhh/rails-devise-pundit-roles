@@ -1,0 +1,17 @@
+<%= generator_label %>
+
+<td>
+  <%%= link_to user.email, user %>
+</td>
+<td>
+  <%%= form_for(user) do |f| %>
+    <%%= f.select(:user_system_role, User.user_system_roles.keys.map {|role| [role.titleize,role]}) %>
+    <%%= f.submit 'Change System Role', :class => 'btn button-xs' %>
+  <%% end %>
+</td>
+<td>
+  <%%= link_to("Edit rights", user_rights_path(user),  :class => 'btn button-xs') %>
+</td>
+<td>
+  <%%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn-danger button-xs') unless user == current_user %>
+</td>

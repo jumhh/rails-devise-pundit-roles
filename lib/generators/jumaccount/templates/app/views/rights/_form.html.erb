@@ -1,0 +1,23 @@
+<%= generator_label %>
+<%%= form_for(@right) do |f| %>
+  <%%= render 'form_errors', f: @right %>
+  <div class="field">
+    <%%= f.label :user_id %><br>
+    <%%= f.select :user_id, right_user_id_select, {:include_blank => true } %>
+  </div>
+  <%%= render 'form_fields', f: f %>
+  <div class="actions">
+    <%%# = f.submit %>
+    <p><br/>
+    <%% if ( params[:action] == 'show' ) %>
+      <%%= link_to rights_path, :class => "btn btn-primary btn-xs" do %>
+        <%% t('helpers.cancel') %>
+      <%% end %>
+    <%% else %>    <%%= link_to rights_path, :class => "btn btn-default btn-xs" do %>
+        <%% t('helpers.cancel') %>
+      <%% end %>
+      <button type="submit" class="btn btn-success btn-xs submit">Right <%%= t('helpers.save') %></button>
+    <%% end %>  </p>
+  </div>
+
+<%% end %>

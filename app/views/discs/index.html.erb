@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<h3>Discs</h3>
+		<div class="column">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Feld1</th>
+						<th>Feld2</th>
+						<th>Tracks</th>
+						<th>User_Id</th>
+						<th>Company_Id</th>
+						<th>Team_Id</th>
+						<th colspan="3">Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @discs.each do |disc| %>
+					<tr>
+						<td><%= disc.feld1 %></td>
+						<td><%= disc.feld2 %></td>
+						<td><%= disc.tracks %></td>
+						<td><%= disc.user_id %></td>
+						<td><%= disc.company_id %></td>
+						<td><%= disc.team_id %></td>
+						<td><%= link_to 'Show', disc %></td>
+						<td><%= link_to 'Edit', edit_disc_path(disc) %></td>
+						<td><%= link_to 'Destroy', disc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<br>
+
+			<%= link_to 'New Disc', new_disc_path %>
+		</div>
+	</div>
+</div>

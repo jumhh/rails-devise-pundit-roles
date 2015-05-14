@@ -1,0 +1,14 @@
+# jumaccount generator
+
+en:
+  helpers:
+    submit:
+      create: "Create %{model}"
+      submit: "Save %{model}"
+      update: "Update %{model}"
+    cancel: "Cancel"
+    save:   "Save"
+    saved:  "Successfully saved."
+    deleted:  "Successfully destroyed."
+    notsaved:  "Unable to save."
+    saveerror: "prohibited these data from being saved:"

@@ -1,0 +1,43 @@
+<%= form_for(@disc) do |f| %>
+  <% if @disc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@disc.errors.count, "error") %> <%= I18n.t('helpers.saveerror') %></h2>
+
+      <ul>
+      <% @disc.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => @disc.user_id %>
+  <%= f.hidden_field :company_id, :value => @disc.company_id %>
+  <%= f.hidden_field :team_id, :value => @disc.team_id %>
+
+  <div class="field">
+    <%= f.label :feld1 %><br>
+    <%= f.text_field :feld1 %>
+  </div>
+  <div class="field">
+    <%= f.label :feld2 %><br>
+    <%= f.text_field :feld2 %>
+  </div>
+  <div class="field">
+    <%= f.label :tracks %><br>
+    <%= f.number_field :tracks %>
+  </div>
+  <div class="actions">
+    <%# = f.submit %>
+    <p><br/>
+    <% if ( params[:action] == 'show' ) %>
+      <%= link_to discs_path, :class => "btn btn-primary btn-xs" do %>
+        <% t('helpers.cancel') %>
+      <% end %>
+    <% else %>    <%= link_to discs_path, :class => "btn btn-default btn-xs" do %>
+        <% t('helpers.cancel') %>
+      <% end %>
+      <button type="submit" class="btn btn-success btn-xs submit">Disc <%= t('helpers.save') %></button>
+    <% end %>  </p>
+  </div>
+<% end %>

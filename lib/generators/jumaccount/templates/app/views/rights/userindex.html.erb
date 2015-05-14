@@ -1,0 +1,43 @@
+<%= generator_label %>
+<div class="container">
+  <div class="row">
+    <h3>Rights <%%= @actuser.user_account_name %> - <%%= @actuser.email %></h3>
+    <div class="column">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>ID</th>
+            <th>Team</th>
+            <th>ID</th>
+            <th>Right role</th>
+            <th colspan="3">Actions</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <%% @rights.each do |right| %>
+          <tr>
+            <td><%%= right.company.company_name %></td>
+            <td><%%= right.company_id %></td>
+            <td><%%= right.team.team_name %></td>
+            <td><%%= right.team_id %></td>
+            <td><%%= right.right_role.titleize %></td>
+            <td><%%= link_to 'Show', user_right_path(@actuser.id, right) %></td>
+            <td><%%= link_to 'Edit', edit_user_right_path(@actuser.id, right) %></td>
+            <td><%%= link_to 'Destroy', user_right_path(@actuser.id, right), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <%% end %>
+        </tbody>
+      </table>
+
+      <br>
+
+      <%%= link_to "New Right for #{@actuser.email}", new_user_right_path(@actuser.id) %>
+    </div>
+  </div>
+</div>
+
+

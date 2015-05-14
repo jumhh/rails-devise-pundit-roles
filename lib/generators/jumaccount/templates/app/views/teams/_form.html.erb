@@ -1,0 +1,33 @@
+<%= generator_label %>
+<%%= form_for(@team) do |f| %>
+  <%% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%%= pluralize(@team.errors.count, "error") %>  <%%= I18n.t('helpers.saveerror') %></h2>
+
+      <ul>
+      <%% @team.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+  <div class="field">
+    <%%= f.label :team_name %><br>
+    <%%= f.text_field :team_name %>
+  </div>
+  
+  <div class="actions">
+    <%%# = f.submit %>
+    <p><br/>
+    <%% if ( params[:action] == 'show' ) %>
+      <%%= link_to teams_path, :class => "btn btn-primary btn-xs" do %>
+        <%% t('helpers.cancel') %>
+      <%% end %>
+    <%% else %>    <%%= link_to teams_path, :class => "btn btn-default btn-xs" do %>
+        <%% t('helpers.cancel') %>
+      <%% end %>
+      <button type="submit" class="btn btn-success btn-xs submit">Team <%%= t('helpers.save') %></button>
+    <%% end %>  </p>
+  </div>
+<%% end %>

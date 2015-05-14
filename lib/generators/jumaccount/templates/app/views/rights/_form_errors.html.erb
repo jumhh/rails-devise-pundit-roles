@@ -1,0 +1,12 @@
+<%= generator_label %>
+  <%% if f.errors.any? %>
+    <div id="error_explanation">
+      <h2><%%= pluralize(f.errors.count, "error") %> <%%= I18n.t('helpers.saveerror') %></h2>
+
+      <ul>
+      <%% f.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>

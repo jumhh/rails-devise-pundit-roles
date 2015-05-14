@@ -1,0 +1,23 @@
+<h3>Show Team</h3>
+
+<p>
+  <strong>Feld1:</strong>
+  <%= @disc.feld1 %>
+</p>
+
+<p>
+  <strong>Feld2:</strong>
+  <%= @disc.feld2 %>
+</p>
+
+<p>
+  <strong>Tracks:</strong>
+  <%= @disc.tracks %>
+</p>
+
+<%= link_to edit_disc_path(@disc), :class => "btn btn-default btn-xs" do %>
+        <% t('helpers.edit') %>
+<% end %>&nbsp;
+<%= link_to discs_path, :class => "btn btn-primary btn-xs" do %>
+        <% t('helpers.back') %>
+<% end %>

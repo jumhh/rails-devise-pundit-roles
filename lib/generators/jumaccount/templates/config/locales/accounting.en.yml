@@ -200,6 +200,13 @@ en:
       created_at: 'Created At'
       updated_at: 'Updated At'
 
+  visitors: 
+
+    # Shortnames for TableHeaders
+    # usage in index list: t('team.index.attribute')
+    index:
+      title: 'Welcome' # page title
+
 
   activerecord:
     models:

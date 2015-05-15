@@ -105,6 +105,7 @@ class JumaccountGenerator < Rails::Generators::Base
     template "config/initializers/devise_permitted_parameters.rb"
     template "config/initializers/devise.rb"
     
+    # This may lead to an error. So just do it by hand and start generator again:
     comment "config/initializers/devise.rb", "config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'"
     insert_into_file "config/initializers/devise.rb", 
                      :after => "# with default \"from\" parameter.\n" do
@@ -314,6 +315,9 @@ class JumaccountGenerator < Rails::Generators::Base
     template "app/views/rights/usershow.html.erb"
     # json-files not adapted
     
+    # If you have a duplicate route e.g. "root" you cannot call rails and have to
+    # clear the problem by hand
+    
     insert_into_file "config/routes.rb",
                      :after => "Rails.application.routes.draw do\n" do
       "\n  #{generator_label_rb} Start (vor resources :profiles!)\n" +
@@ -345,10 +349,6 @@ class JumaccountGenerator < Rails::Generators::Base
       "  #{generator_label_rb} Ende\n"
     end
     
-    copy_keep "config/locales/accounting.en.yml", "config/locales/accounting.en.yml"
-    copy_keep "config/locales/accounting.de.yml", "config/locales/accounting.de.yml"
-    copy_keep "config/locales/helpers.en.yml", "config/locales/helpers.en.yml"
-    
     insert_into_file "app/assets/javascripts/application.js",
                      :before => "//= require_tree ." do
       "\n//= require bootstrap-sprockets\n"
@@ -361,6 +361,11 @@ class JumaccountGenerator < Rails::Generators::Base
     copy_keep "app/assets/stylesheets/framework_and_overrides.css.scss", "app/assets/stylesheets/framework_and_overrides.css.scss"
     copy_keep "app/assets/stylesheets/scaffolds.scss", "app/assets/stylesheets/scaffolds.css.scss"
     
+    # I had errors with these. Then you have to copy by hand.
+    copy_keep "config/locales/accounting.en.yml", "config/locales/accounting.en.yml"
+    copy_keep "config/locales/accounting.de.yml", "config/locales/accounting.de.yml"
+    copy_keep "config/locales/helpers.en.yml", "config/locales/helpers.en.yml"
+        
   end # generate_jumaccount 
   
   def generator_label
@@ -411,7 +416,7 @@ class JumaccountGenerator < Rails::Generators::Base
   end
   def copy_keep(source, goal)
     if ( ! File.file?(goal) )
-      template source, goal
+      copy_file source, goal
     else
       puts magenta("   unchanged  ") + goal
     end
